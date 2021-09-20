@@ -1,0 +1,31 @@
+body{
+    margin: 0;
+}
+
+.navbar{
+    width: 20rem;
+    background-color: #e6e6e6;
+}
+
+.leftColumn{
+    position: absolute;
+    left: 0;
+    width: 20rem;
+    background-color: #e6e6e6;
+}
+
+.notifContainer{
+    width: 15rem;
+    height: 5rem;
+    background-color: red;
+}
+
+.tasksContainer{
+    width: 15rem;
+    height: 30rem;
+    background-color: blue;
+}
+
+.addTaskBtn{
+    width: 15rem;
+}
