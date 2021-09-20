@@ -1,6 +1,4 @@
 import React from 'react';
-import Navbar from './Navbar.jsx';
-
 import { Route, Switch } from 'react-router-dom';
 import Home from './Home.jsx';
 import Calendar from './Calendar.jsx';
@@ -9,7 +7,6 @@ import Error from './Error.jsx';
 
 function App() {
   return (<div>
-    <Navbar />
     <Switch>
             <Route path="/" component={Home} exact />
             <Route path="/calendar" component={Calendar} />
