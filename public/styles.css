@@ -3,6 +3,11 @@ body{
     overflow-x: hidden;
 }
 
+li:hover{
+    cursor: pointer;
+    color: red;
+}
+
 .navbar{
     width: 20rem;
     background-color: #e6e6e6;
@@ -24,6 +29,7 @@ body{
     width: 20rem;
     height: 40rem;
     background-color: #e6e6e6;
+    overflow-y: hidden;
 }
 
 .notifContainer{
@@ -52,7 +58,9 @@ body{
     background-color: blueviolet;
 }
 
-.tasks{
+.tasksContainer{
+    background-color: aqua;
+    height: 20rem;
     overflow-y: scroll;
     scroll-behavior: smooth;
 }

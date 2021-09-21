@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
+import Events from './Events.js';
 
 function Tasks(){
 
     const dates = [1,2,3,4,5,6,7];
     const months = ["jan", "feb", "march"];
-    const arr = [];
+    var [arr, update] = useState([]);
+    const [date, updateDate] = useState("");
+    const [event, updateEvent] = useState("");
+    var place = 0;
 
     function getArr(){
         for(let i = 0; i <months.length; i++){
@@ -14,20 +18,46 @@ function Tasks(){
             }
         }  
 
-        if(arr.includes("4 jan")){
-            var x = arr.indexOf("4 jan");
-            console.log("found 4th jan!");
+        if(arr.includes(date)){
+            var x = arr.indexOf(date);
+            console.log("found " +date+"!");
             console.log(x);
-            arr[x+1] = "CHANGED";
+            
         } else{
-            console.log("Could not find 8th jan!");
+            console.log("Could not find"+ date+"!");
+        }
+    }
+
+    function handleClick(){
+        console.log("li clicked!");
+    }
+
+    function inputDate(d){
+        console.log(d.target.value);
+        updateDate(d.target.value);
+    }
+
+    function inputEvent(e){
+        console.log(e.target.value);
+        updateEvent(e.target.value);
+    }
+
+    function showDesc(s){
+        if(s.date === date){
+            return s.date+ " "+ s.description + " ";
         }
     }
 
     return(
-        <div className = "tasks">
+        <div className = "tasksContainer">
             {getArr()}
-            {arr.map((e) =>{return <li>{e}</li>})}
+            {Events.map(showDesc)}
+            {arr.map((e) =>{return <li onClick = {handleClick}>{e}</li>})}
+            <form>
+                <input type="text" onChange = {inputDate} placeholder = "Enter date"/>
+                <input type="text" onChange = {inputEvent} placeholder = "Enter event description"/>
+                <button type = "submit">Add event</button>
+            </form>
         </div>
     );
 
