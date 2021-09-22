@@ -1,11 +1,9 @@
 const events = [
     {
-        date: "5 jan",
-        description: "5 Task"
+        date: "5 jan"
     },
     {
-        date: "6 jan",
-        description: "6 Task"
+        date: "6 jan"
     }
 ];
 

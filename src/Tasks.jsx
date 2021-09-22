@@ -6,58 +6,72 @@ function Tasks(){
     const dates = [1,2,3,4,5,6,7];
     const months = ["jan", "feb", "march"];
     var [arr, update] = useState([]);
-    const [date, updateDate] = useState("");
-    const [event, updateEvent] = useState("");
-    var place = 0;
+    var [date, updateDate] = useState("");
+    var [event, updateEvent] = useState("");
 
     function getArr(){
         for(let i = 0; i <months.length; i++){
             for(let j = 0; j<dates.length; j++){
-                arr.push(dates[j] + " " + months[i]);    
-                arr.push("empty");
+                arr.push({date: dates[j] +" "+months[i]});//dates[j] + " " + months[i]);    
+                arr.push({date: "empty"});
             }
         }  
-
-        if(arr.includes(date)){
-            var x = arr.indexOf(date);
-            console.log("found " +date+"!");
-            console.log(x);
-            
-        } else{
-            console.log("Could not find"+ date+"!");
-        }
     }
 
     function handleClick(){
         console.log("li clicked!");
+        //show the event if it exists
     }
 
     function inputDate(d){
         console.log(d.target.value);
-        updateDate(d.target.value);
+            date = d.target.value;
     }
 
     function inputEvent(e){
         console.log(e.target.value);
-        updateEvent(e.target.value);
+            event = e.target.value;
     }
 
     function showDesc(s){
-        if(s.date === date){
-            return s.date+ " "+ s.description + " ";
-        }
+        return s.date;
+    }
+
+    function showDesc1(s){
+        return s.date;
+    }
+
+    function buttonClick(){
+        console.log("button clicked!");
+        if(date!=="" && event!==""){
+        Events.push({
+            //id: Events.length-1,
+            date: date
+        }); 
+    }
+        console.log(Events.map(showDesc));
+    
+        console.log(arr.map(showDesc1));
+
+        //checking if the events stored in Events.jsx is present in arr or not
+        for(let i = 0; i <Events.length; i++){
+            for(let j = 0; j<arr.length; j++){
+                if(Events[i].date === arr[j].date){
+                    console.log("found"); //change all the respective "empty"s in arr
+                }
+            }
+        } 
     }
 
     return(
         <div className = "tasksContainer">
             {getArr()}
-            {Events.map(showDesc)}
-            {arr.map((e) =>{return <li onClick = {handleClick}>{e}</li>})}
+            {arr.map((e) =>{return <li onClick = {handleClick}>{e.date}</li>})}
             <form>
                 <input type="text" onChange = {inputDate} placeholder = "Enter date"/>
                 <input type="text" onChange = {inputEvent} placeholder = "Enter event description"/>
-                <button type = "submit">Add event</button>
             </form>
+            <button onClick={buttonClick}>Add event</button>
         </div>
     );
 
