@@ -58,7 +58,7 @@ li:hover{
     background-color: blueviolet;
 }
 
-.btn{
+.btn, .btn1{
     display: block;
 }
 
