@@ -58,9 +58,12 @@ li:hover{
     background-color: blueviolet;
 }
 
-.tasksContainer{
-    background-color: aqua;
-    height: 20rem;
+.btn{
+    display: block;
+}
+
+.tasks{
+    height: 30rem;
     overflow-y: scroll;
     scroll-behavior: smooth;
 }
